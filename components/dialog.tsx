@@ -17,7 +17,7 @@ import OneInput from "./one-input";
 
 export default function Dialog({ words }: { words: string[] }) {
   const [word, setWord] = useState("");
-  const [correct, setCorrect] = useState("");
+  const [answear, setAnswear] = useState("");
   const [mistakes, setMistakes] = useState("");
 
   const setNewWord = useCallback(() => {
@@ -41,7 +41,7 @@ export default function Dialog({ words }: { words: string[] }) {
   };
 
   const onResetClick = () => {
-    setCorrect(new Array(word.length).fill(" ").join(""));
+    setAnswear(new Array(word.length).fill(" ").join(""));
     setMistakes("");
   };
 
@@ -53,9 +53,12 @@ export default function Dialog({ words }: { words: string[] }) {
     const target = e.currentTarget;
     const rawValue = target.value.trim();
     const value = rawValue.length > 1 ? rawValue[1] : rawValue[0];
-    setCorrect((cr) => cr.substring(0, i) + value + cr.substring(i + 1));
 
-    if (correct === word) alert('🎉 Success')
+    const ans = answear.substring(0, i) + value + answear.substring(i + 1)
+
+    setAnswear(ans);
+
+    if (ans === word) alert('🎉 Success')
 
     if (value === word[i]) {
       const inputs = (
@@ -109,7 +112,7 @@ export default function Dialog({ words }: { words: string[] }) {
             <OneInput
               key={k}
               autoFocus={!k}
-              value={correct[k] || ""}
+              value={answear[k] || ""}
               onChange={onChange(k)}
             />
           ))}
