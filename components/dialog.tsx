@@ -50,7 +50,10 @@ export default function Dialog({ words }: { words: string[] }) {
   const onChange: (
     letterIndex: number
   ) => ChangeEventHandler<HTMLInputElement> = (i) => (e) => {
-    if (mistakes.length > 4) return;
+    if (mistakes.length > 4) {
+      onResetClick();
+      return;
+    }
     const target = e.currentTarget;
     const rawValue = target.value.trim();
     const value = rawValue.length > 1 ? rawValue[1] : rawValue[0];
