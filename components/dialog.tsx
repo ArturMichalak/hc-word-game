@@ -87,7 +87,7 @@ export default function Dialog({ words }: { words: string[] }) {
             {/* before for background dots mistakes as relative after */}
             <small>Tries ({mistakes.length}/5):</small>
             <div
-              style={{ width: 12 * word.length }}
+              style={{ width: 12 * 5 }}
               className="inline-block border-t-[6px] border-dotted relative"
             >
               <i
