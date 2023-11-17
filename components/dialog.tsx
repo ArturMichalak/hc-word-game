@@ -66,6 +66,8 @@ export default function Dialog({ words }: { words: string[] }) {
       const currentIndex = inputs.indexOf(target);
 
       inputs[currentIndex + 1].focus();
+
+      if (correct === word) alert('🎉 Success')
     } else {
       if (mistakes.length > 4) {
         onResetClick();
