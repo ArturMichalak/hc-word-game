@@ -55,6 +55,8 @@ export default function Dialog({ words }: { words: string[] }) {
     const value = rawValue.length > 1 ? rawValue[1] : rawValue[0];
     setCorrect((cr) => cr.substring(0, i) + value + cr.substring(i + 1));
 
+    if (correct === word) alert('🎉 Success')
+
     if (value === word[i]) {
       const inputs = (
         Array.from(document.querySelectorAll("input, button")) as (
@@ -66,8 +68,6 @@ export default function Dialog({ words }: { words: string[] }) {
       const currentIndex = inputs.indexOf(target);
 
       inputs[currentIndex + 1].focus();
-
-      if (correct === word) alert('🎉 Success')
     } else {
       if (mistakes.length > 4) {
         onResetClick();
